@@ -4,6 +4,41 @@ import React, { useState, useRef, useEffect } from 'react';
 // T0: NEW HIGH FIDELITY STYLES
 // ==========================================
 
+// 0. Anthropic Serif (人文智性)
+export const AnthropicCard = () => {
+    return (
+        <div className="h-56 bg-[#F3F0EB] flex flex-col items-center justify-center relative overflow-hidden group cursor-pointer">
+            {/* Subtle Gradient Noise */}
+            <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] pointer-events-none mix-blend-multiply"></div>
+            
+            {/* Breathing Orb */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-tr from-[#E6DCC8] to-[#D9D2C5] rounded-full opacity-50 blur-3xl animate-pulse"></div>
+
+            {/* Editorial Content */}
+            <div className="relative z-10 text-center flex flex-col items-center">
+                <div className="mb-4">
+                     <span className="font-['Playfair_Display'] font-medium italic text-[#333333] text-3xl tracking-wide group-hover:tracking-widest transition-all duration-700">
+                         Claude
+                     </span>
+                </div>
+                
+                <p className="font-sans text-[10px] text-[#666666] max-w-[140px] leading-relaxed mb-6 opacity-80">
+                    Safe, accurate, and secure AI for your team.
+                </p>
+
+                <button className="px-6 py-2 bg-[#D06C59] text-white font-serif text-sm rounded-full shadow-[0_4px_14px_rgba(208,108,89,0.3)] hover:bg-[#B85C4A] hover:shadow-[0_6px_20px_rgba(208,108,89,0.4)] hover:-translate-y-0.5 transition-all duration-300">
+                    Talk to Claude
+                </button>
+            </div>
+            
+            {/* Corner Accent */}
+            <div className="absolute bottom-4 left-4 font-serif text-[#333333] opacity-30 text-xs italic">
+                Anthropic
+            </div>
+        </div>
+    );
+};
+
 // 0. AI Abstract (智构抽象)
 export const AiAbstractCard = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);

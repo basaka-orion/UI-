@@ -21,26 +21,81 @@ export interface StyleItem {
   tierColorClass: string;
   description: string;
   application: string;
-  // If true, uses a specialized component in InteractiveCards.tsx. 
-  // If false/undefined, uses the generic HTML structure defined in constants.tsx
   hasCustomRender?: boolean; 
-  // Generic render data for non-interactive simple cards
   genericRenderData?: {
     containerClass: string;
-    contentHtml?: string; // We will use this to inject simple structures
+    contentHtml?: string;
     wrapperClass?: string;
   }
 }
 
 export interface FusionResult {
-  id: string; // Unique timestamp ID
+  id: string;
   name: string;
   description: string;
   css: string;
   html: string;
   prd: PrdData;
-  parentStyles: string[]; // Names of parent styles
+  parentStyles: string[];
   timestamp: number;
+}
+
+// Expert Persona Definition
+export interface ExpertOpinion {
+    role: 'CPO' | 'CTO' | 'Design Director';
+    name: string;
+    avatar: string;
+    opinion: string;
+    focus: string; // e.g. "User Retention" or "Scalability"
+}
+
+// Updated Project PRD with Soul & Research
+export interface ProjectPrd {
+  id: string;
+  timestamp: number;
+  title: string;
+  userIdea: string;
+  elevatorPitch: string;
+  targetAudience: string;
+  
+  // NEW: Research Phase Data
+  researchReport: string; // Summary of Google Search findings
+  
+  // NEW: The Round Table Session (Chinese)
+  teamBrainstorming: ExpertOpinion[];
+
+  // Design Strategy
+  visualStyleFusion: {
+    styleIds: string[];
+    reasoning: string;
+    colorPalette: string[];
+  };
+
+  // UI Preview
+  previewHtml: string;
+  previewCss: string;
+
+  // Product Specs
+  features: Array<{
+    name: string;
+    description: string;
+    priority: 'P0' | 'P1' | 'P2';
+  }>;
+
+  // Tech Specs
+  techStack: {
+    frontend: string;
+    backend: string;
+    database: string;
+    infrastructure: string;
+  };
+
+  // Architecture
+  databaseSchema: string;
+  apiEndpoints: string;
+
+  // NEW: Full Markdown Manual
+  prdManual: string;
 }
 
 export type Platform = 'web' | 'ios' | 'android' | 'mini';

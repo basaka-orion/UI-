@@ -4,6 +4,20 @@ import { PrdData, StyleItem } from './types';
 // PRD Data Dictionary
 // ==========================================
 export const PRD_DATA: Record<string, PrdData> = {
+  // --- T0: Anthropic Serif ---
+  'anthropic-serif': {
+    name: 'Anthropic Serif (人文智性)',
+    specs: {
+      radius: '12px (Soft)',
+      shadow: 'Subtle Warm Glow',
+      font: 'Serif (Editorial) / Sans (Clean)',
+      colors: 'Warm Paper (#F3F0EB), Charcoal, Terracotta'
+    },
+    web: '核心美学是“一本会呼吸的杂志”。背景必须使用暖色调 (#F3F0EB 或 #EAE0D5)。标题使用高雅的衬线体 (Recoleta 或 Playfair Display)。按钮为圆润的 Pill Shape。交互反馈要克制、优雅，避免过度的科技感炫光。',
+    ios: '使用系统衬线字体 (New York) 配合 San Francisco。强调阅读体验。界面元素之间要有大量的呼吸感留白。',
+    android: 'Material You 的色彩系统非常适合，提取大地色系。使用 Serif 字体作为标题强调。',
+    mini: '轻量化阅读体验。加载动画可以使用简单的衬线字母呼吸效果。'
+  },
   // --- T0: AI Abstract ---
   'ai-abstract': {
     name: 'AI Abstract (智构抽象)',
@@ -440,6 +454,14 @@ export const getPrdData = (id: string): PrdData => {
 const RAW_STYLES: Omit<StyleItem, 'title'>[] = [
   // --- T0 Styles ---
   {
+      id: 'anthropic-serif',
+      tier: 'T0',
+      tierColorClass: 'bg-[#EAE0D5] text-[#333333] ring-2 ring-[#D9D2C5]',
+      description: '特点: 人文智性，暖色调衬线体，如同一本会呼吸的杂志。',
+      application: '应用: 知识库, 深度阅读, 智力型 AI 助手。',
+      hasCustomRender: true
+  },
+  {
       id: 'ai-abstract',
       tier: 'T0',
       tierColorClass: 'bg-indigo-900 text-cyan-300 ring-2 ring-cyan-500',
@@ -833,6 +855,7 @@ const getDisplayName = (id: string, description: string) => {
     
     // Simple map for nice names if needed, or just split by dash and capitalize
     const names: Record<string, string> = {
+        'anthropic-serif': 'Anthropic Serif (人文智性)',
         'ai-abstract': 'AI Abstract (智构抽象)',
         'blueprint-cad': 'Blueprint CAD (工程蓝图)',
         'liquid-glass': 'Liquid Glass (液态玻璃)',
