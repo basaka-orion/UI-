@@ -4,6 +4,119 @@ import { PrdData, StyleItem } from './types';
 // PRD Data Dictionary
 // ==========================================
 export const PRD_DATA: Record<string, PrdData> = {
+  // --- T0: Chromium Liquid (液态铬金) ---
+  'chromium': {
+    name: 'Chromium Liquid (液态铬金)',
+    specs: {
+      radius: 'Fluid / Blob',
+      shadow: 'Specular Reflection',
+      font: 'Gothic / Serrated / Liquid',
+      colors: 'Silver, Chrome, Neon Green'
+    },
+    web: '模拟 T-1000 液态金属质感。必须使用复杂的 CSS gradient 模拟金属反光。混合模式 (mix-blend-mode: difference/exclusion) 是关键。配合 SVG 滤镜和噪点 (Noise) 纹理。',
+    ios: '使用 Metal Shader 渲染实时流体。交互带有粘滞感。',
+    android: 'RenderEffect 模糊 + 阈值滤镜实现液化。',
+    mini: '使用静态的高清液态金属 3D 渲染图作为背景，前景文字做简单的浮动动画。'
+  },
+  // --- T0: Kinetic Typography (动势排印) ---
+  'kinetic': {
+    name: 'Kinetic Typography (动势排印)',
+    specs: {
+      radius: '0px',
+      shadow: 'None',
+      font: 'Variable Fonts (Width/Slant axis)',
+      colors: 'High Contrast B&W + Neon Accent'
+    },
+    web: '文字即图像。字号必须巨大 (10vw+)。利用 Variable Fonts 实现鼠标悬停时的拉伸、倾斜变形。无休止的 Marquee 滚动。打破网格限制。',
+    ios: 'CoreText 引擎深度定制。利用陀螺仪控制文字的重力倒塌。',
+    android: 'TextClock 或 AnimatedVectorDrawable 实现文字形变动画。',
+    mini: 'Canvas 绘制文字动画以保证 60fps 帧率。'
+  },
+  // --- T0: Dreamcore (梦核航空) ---
+  'dreamcore': {
+    name: 'Dreamcore Aero (梦核航空)',
+    specs: {
+      radius: '16px - 100px',
+      shadow: 'Soft Bloom / Glow',
+      font: 'Comic Sans / Rounded Sans',
+      colors: 'Sky Blue, Grass Green, Pink clouds'
+    },
+    web: 'Y2K 美学的超现实变体。蓝天白云背景，加上低保真 (Low-res) 的 3D 元素。带有一种“熟悉的陌生感” (Liminal Space)。光晕 (Bloom) 效果要强。',
+    ios: '复古拟物图标，但带有现代的柔光滤镜。',
+    android: '动态壁纸风格，气泡漂浮动画。',
+    mini: '使用高饱和度的 PNG 贴纸堆叠。'
+  },
+  // --- T0: Spatial Bento (空间便当盒) ---
+  'spatial': {
+    name: 'Spatial Bento (空间便当盒)',
+    specs: {
+      radius: '24px',
+      shadow: 'Inner Glow + Spotlight',
+      font: 'Inter / San Francisco',
+      colors: 'Dark Glass, Subtle Gradients'
+    },
+    web: '超越普通 Grid。卡片必须有深度 (Z-axis)。鼠标移动时，卡片边缘要有跟随光标的“聚光灯”效果 (Spotlight Effect)。材质是深色磨砂玻璃。',
+    ios: 'VisionOS 设计规范的降维打击。悬浮感，层级分明。',
+    android: 'Material 3 的 Elevation 结合动态光照 Shader。',
+    mini: '简化为深色半透明卡片，保留边框高亮。'
+  },
+  // --- T0: Holographic Foil (全息镭射) ---
+  'holographic': {
+    name: 'Holographic Foil (全息镭射)',
+    specs: {
+      radius: '12px',
+      shadow: 'Iridescent Glow',
+      font: 'Söhne / Helvetica Now',
+      colors: 'Spectrum Gradients, Silver'
+    },
+    web: '模拟物理镭射材质。使用 background-attachment: fixed 配合复杂的线性渐变模拟光线折射。必须叠加 SVG Noise 纹理以增加真实感。',
+    ios: 'CoreImage 滤镜链：色彩偏移 + 噪点叠加。',
+    android: 'ShaderFactory 实现动态彩虹光效。',
+    mini: '使用预渲染的高清镭射视频作为背景，循环播放。'
+  },
+  // --- T0: Dither Punk (抖动朋克) ---
+  'dither': {
+    name: 'Dither Punk (抖动朋克)',
+    specs: {
+      radius: '0px',
+      shadow: 'Hard Drop 1-bit',
+      font: 'Pixel / Bitmap Fonts',
+      colors: '1-bit Black & White only'
+    },
+    web: '1-bit 美学。使用 CSS radial-gradient 模拟有序抖动 (Ordered Dithering)。图片必须处理为 Atkinson Dither 效果。交互只有黑与白，无中间灰度。',
+    ios: '自定义 Bitmap 渲染管线。',
+    android: 'PorterDuff 模式处理位图。',
+    mini: 'Canvas 像素级操作模拟。'
+  },
+  // --- T0: Risograph (孔版印刷) ---
+  'risograph': {
+    name: 'Risograph (孔版印刷)',
+    specs: {
+      radius: 'Rough Edge',
+      shadow: 'Multiply Offset',
+      font: 'Serif (Ink Bleed)',
+      colors: 'Fluorescent Pink, Cornflower Blue'
+    },
+    web: '模拟油墨叠印。核心是 mix-blend-mode: multiply。颜色必须是传统的 Riso 色卡（荧光粉、蓝、黄）。故意制造 2px-3px 的套色偏差 (Misalignment)。',
+    ios: 'CoreGraphics 混合模式。',
+    android: 'Paint.setXfermode(PorterDuff.Mode.MULTIPLY)。',
+    mini: 'CSS 混合模式 (部分支持) 或 Canvas 绘制。'
+  },
+  // --- T0: Ethereal Glow (以太光晕) ---
+  'ethereal': {
+    name: 'Ethereal Glow (以太光晕)',
+    specs: {
+      radius: '40px',
+      shadow: 'Massive White Bloom',
+      font: 'Editorial New / Thin Serif',
+      colors: 'White, Pale Gold, Lightest Grey'
+    },
+    web: '过度曝光美学。大量使用 filter: drop-shadow() 制造发光物体。背景是极淡的渐变。字体要细、雅致。给人一种“天堂般”的失重感。',
+    ios: '高斯模糊半径设为 50px+。',
+    android: 'RenderEffect.createBlurEffect。',
+    mini: '半透明白色蒙层叠加。'
+  },
+
   // --- T0: Anthropic Serif ---
   'anthropic-serif': {
     name: 'Anthropic Serif (人文智性)',
@@ -447,12 +560,75 @@ export const getPrdData = (id: string): PrdData => {
 // ==========================================
 // Style Items List - Sorted by Tier then Custom
 // ==========================================
-// Sorting Order: T0, T1, T2, T3
-// Auto-numbered 1 to N
-// ==========================================
 
 const RAW_STYLES: Omit<StyleItem, 'title'>[] = [
-  // --- T0 Styles ---
+  // --- NEW 2025 TRENDS (T0+) ---
+  {
+      id: 'chromium',
+      tier: 'T0',
+      tierColorClass: 'bg-gradient-to-r from-gray-200 to-gray-400 text-black border border-gray-300',
+      description: '2025趋势: 液态金属，反射材质，哥特未来主义 (Gothic Futurism)。',
+      application: '应用: 3D 艺术家, 潮流品牌, Web3 官网。',
+      hasCustomRender: true
+  },
+  {
+      id: 'kinetic',
+      tier: 'T0',
+      tierColorClass: 'bg-black text-lime-400 ring-2 ring-lime-400',
+      description: '2025趋势: 文字即图像。极端拉伸，可变字体，物理动势。',
+      application: '应用: 创意工作室, 电影宣发, 音乐节。',
+      hasCustomRender: true
+  },
+  {
+      id: 'dreamcore',
+      tier: 'T0',
+      tierColorClass: 'bg-sky-200 text-blue-600 ring-2 ring-white',
+      description: '2025趋势: 梦核 (Dreamcore) 与 Frutiger Aero 的超现实变体。',
+      application: '应用: Z世代社区, 音乐专辑, 视觉艺术。',
+      hasCustomRender: true
+  },
+  {
+      id: 'spatial',
+      tier: 'T0',
+      tierColorClass: 'bg-zinc-900 text-zinc-100 ring-2 ring-zinc-700',
+      description: '2025趋势: 空间计算。光照追踪，深度感，聚光灯效果。',
+      application: '应用: 高级 SaaS, AI 界面, Linear-like。',
+      hasCustomRender: true
+  },
+  {
+      id: 'holographic',
+      tier: 'T0',
+      tierColorClass: 'bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 text-white',
+      description: '2025趋势: 物理镭射质感，流动的光谱与噪点。',
+      application: '应用: NFT 平台, 时尚杂志, 创意作品集。',
+      hasCustomRender: true
+  },
+  {
+      id: 'dither',
+      tier: 'T0',
+      tierColorClass: 'bg-gray-800 text-gray-200 border border-gray-600',
+      description: '2025趋势: 抖动朋克。1-bit 低保真美学，技术复古主义。',
+      application: '应用: 独立游戏, 极客博客, 开发者工具。',
+      hasCustomRender: true
+  },
+  {
+      id: 'risograph',
+      tier: 'T0',
+      tierColorClass: 'bg-pink-100 text-pink-600 border border-blue-300',
+      description: '2025趋势: 孔版印刷。油墨错位，色彩叠加，纸质温暖感。',
+      application: '应用: 艺术展览, 独立刊物, 品牌设计。',
+      hasCustomRender: true
+  },
+  {
+      id: 'ethereal',
+      tier: 'T0',
+      tierColorClass: 'bg-white text-gray-400 border border-yellow-100',
+      description: '2025趋势: 以太光晕。过度曝光，极致柔和，神圣的失重感。',
+      application: '应用: 冥想, 心理健康, 高端护肤。',
+      hasCustomRender: true
+  },
+
+  // --- T0 Styles (Existing) ---
   {
       id: 'anthropic-serif',
       tier: 'T0',
@@ -847,14 +1023,16 @@ const RAW_STYLES: Omit<StyleItem, 'title'>[] = [
 
 // Helper to extract base name from ID for display
 const getDisplayName = (id: string, description: string) => {
-    // Extract name from description (before parenthesis) or ID
-    // Actually, we can just use a map or format the ID nicely.
-    // For this museum, let's just make sure the Titles are nice.
-    // The previous array had "title" hardcoded.
-    // We will generate titles dynamically now.
-    
-    // Simple map for nice names if needed, or just split by dash and capitalize
+    // Mapping for new and existing styles
     const names: Record<string, string> = {
+        'chromium': 'Chromium Liquid (液态铬金)',
+        'kinetic': 'Kinetic Type (动势排印)',
+        'dreamcore': 'Dreamcore Aero (梦核航空)',
+        'spatial': 'Spatial Bento (空间便当)',
+        'holographic': 'Holographic Foil (全息镭射)',
+        'dither': 'Dither Punk (抖动朋克)',
+        'risograph': 'Risograph (孔版印刷)',
+        'ethereal': 'Ethereal Glow (以太光晕)',
         'anthropic-serif': 'Anthropic Serif (人文智性)',
         'ai-abstract': 'AI Abstract (智构抽象)',
         'blueprint-cad': 'Blueprint CAD (工程蓝图)',

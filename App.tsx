@@ -6,6 +6,16 @@ import FusionResultModal from './components/FusionResultModal';
 import ProjectPrdModal from './components/ProjectPrdModal';
 import { fuseStyles, generateProjectPrd } from './utils/ai';
 import { 
+    // NEW T0 (2025)
+    ChromiumCard,
+    KineticCard,
+    DreamcoreCard,
+    SpatialCard,
+    HolographicCard,
+    DitherCard,
+    RisographCard,
+    EtherealCard,
+    // EXISTING T0
     BentoCard, 
     GlassCard, 
     BrutalCard, 
@@ -130,7 +140,17 @@ const App: React.FC = () => {
     // Component Factory
     const renderCardContent = (id: string) => {
         switch(id) {
-            // T0 Interactive Components
+            // NEW T0 (2025 Avant-Garde)
+            case 'chromium': return <ChromiumCard />;
+            case 'kinetic': return <KineticCard />;
+            case 'dreamcore': return <DreamcoreCard />;
+            case 'spatial': return <SpatialCard />;
+            case 'holographic': return <HolographicCard />;
+            case 'dither': return <DitherCard />;
+            case 'risograph': return <RisographCard />;
+            case 'ethereal': return <EtherealCard />;
+
+            // T0 Interactive Components (Existing)
             case 'anthropic-serif': return <AnthropicCard />;
             case 'ai-abstract': return <AiAbstractCard />;
             case 'blueprint-cad': return <BlueprintCadCard />;
@@ -145,7 +165,7 @@ const App: React.FC = () => {
             case 'brutal-bw': return <BrutalBWCard />;
             case 'gen-ui': return <GenUICard />;
 
-            // T0/T1/T2/T3 Existing Interactive Components
+            // T1/T2/T3 Existing Interactive Components
             case 'bento': return <BentoCard />;
             case 'glass': return <GlassCard />;
             case 'brutal': return <BrutalCard />;
@@ -154,7 +174,7 @@ const App: React.FC = () => {
             case 'dos': return <DosCard />;
             case 'win95': return <Win95Card />;
             
-            // Fallback for everything else (T1 styles, etc.)
+            // Fallback for everything else
             default: return <GenericCardRender id={id} />;
         }
     };
@@ -170,7 +190,7 @@ const App: React.FC = () => {
                             <span className="ml-2 text-indigo-600 text-xs align-middle bg-indigo-50 px-2 py-1 rounded border border-indigo-100 uppercase tracking-wide">Gemini 3.0 Edition</span>
                         </h1>
                         <p className="text-xs text-gray-500 font-mono mt-1">
-                            {STYLE_ITEMS.length} Styles • Cross-Platform Specs • AI Fusion
+                            {STYLE_ITEMS.length} Styles • 2025 Avant-Garde • AI Fusion
                         </p>
                     </div>
 
@@ -287,6 +307,9 @@ const App: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
                         {STYLE_ITEMS.map((item) => {
                             const isSelected = selectedStyleIds.includes(item.id);
+                            // Highlight New T0 Styles
+                            const isNewT0 = ['chromium', 'kinetic', 'dreamcore', 'spatial', 'holographic', 'dither', 'risograph', 'ethereal'].includes(item.id);
+
                             return (
                                 <div 
                                     key={item.id} 
@@ -303,6 +326,13 @@ const App: React.FC = () => {
                                         ${item.id === 'cassette' && !isSelected ? 'border-t-4 border-t-orange-500' : ''}
                                     `}
                                 >
+                                    {/* New Label */}
+                                    {isNewT0 && !isFusionMode && (
+                                        <div className="absolute top-2 left-2 z-20 bg-black/90 backdrop-blur text-white text-[9px] font-bold px-2 py-1 rounded-full uppercase tracking-wider animate-pulse border border-white/20 shadow-lg">
+                                            Trend 2025 💎
+                                        </div>
+                                    )}
+
                                     {/* Selection Indicator */}
                                     {isSelected && (
                                         <div className="absolute top-2 right-2 z-20 w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white shadow-lg animate-bounce">

@@ -1,7 +1,260 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 // ==========================================
-// T0: NEW HIGH FIDELITY STYLES
+// NEW: T0 AVANT-GARDE STYLES (2024-2025)
+// ==========================================
+
+// 1. Chromium Liquid (液态铬金)
+export const ChromiumCard = () => {
+    return (
+        <div className="h-56 bg-black flex items-center justify-center relative overflow-hidden group cursor-pointer">
+            {/* Background Noise */}
+            <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+            
+            {/* Liquid Metal Blobs - Mix Blend Mode Difference */}
+            <div className="absolute inset-0 filter blur-[40px] opacity-80 mix-blend-difference">
+                <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] rounded-full bg-white animate-[spin_8s_linear_infinite]"></div>
+                <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] rounded-full bg-white animate-[spin_10s_reverse_infinite]"></div>
+            </div>
+
+            {/* Chrome Typography Container */}
+            <div className="relative z-10 flex flex-col items-center mix-blend-difference text-white">
+                <h2 className="text-5xl font-black italic tracking-tighter transform skew-x-[-12deg] group-hover:skew-x-0 transition-transform duration-500"
+                    style={{ fontFamily: 'Impact, sans-serif' }}>
+                    CHROME
+                </h2>
+                <div className="w-full h-1 bg-white mt-1 mb-2"></div>
+                <p className="font-mono text-[10px] tracking-[0.5em] uppercase">Liquid Metal</p>
+            </div>
+
+            {/* Specular Highlight Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-overlay"></div>
+        </div>
+    );
+};
+
+// 2. Kinetic Typography (动势排印)
+export const KineticCard = () => {
+    return (
+        <div className="h-56 bg-[#eaff00] flex flex-col justify-between overflow-hidden relative group cursor-crosshair text-black">
+            {/* Marquee Background (Slow) */}
+            <div className="absolute inset-0 flex flex-col justify-center opacity-10 pointer-events-none select-none overflow-hidden">
+                {[...Array(5)].map((_, i) => (
+                    <div key={i} className="whitespace-nowrap text-6xl font-black italic leading-none animate-marquee" style={{ animationDuration: `${10 + i * 2}s` }}>
+                        KINETIC TYPE KINETIC TYPE KINETIC TYPE
+                    </div>
+                ))}
+            </div>
+
+            {/* Main Interactive Text */}
+            <div className="z-10 flex-grow flex items-center justify-center px-4">
+                <h1 className="text-6xl font-black leading-none tracking-tighter text-center transition-all duration-300 ease-out group-hover:scale-y-150 group-hover:scale-x-90 group-hover:tracking-widest">
+                    MOVE
+                    <br />
+                    FAST
+                </h1>
+            </div>
+
+            {/* Floating Badge */}
+            <div className="absolute bottom-4 right-4 bg-black text-[#eaff00] rounded-full w-20 h-20 flex items-center justify-center animate-[spin_4s_linear_infinite] group-hover:animate-none">
+                <svg viewBox="0 0 100 100" className="w-full h-full p-2">
+                    <path id="curve" d="M 50 50 m -37 0 a 37 37 0 1 1 74 0 a 37 37 0 1 1 -74 0" fill="transparent" />
+                    <text className="text-[14px] font-bold uppercase fill-current">
+                        <textPath href="#curve">
+                            • Variable • Fonts • Kinetic •
+                        </textPath>
+                    </text>
+                </svg>
+            </div>
+        </div>
+    );
+};
+
+// 3. Dreamcore Aero (梦核航空)
+export const DreamcoreCard = () => {
+    return (
+        <div className="h-56 bg-gradient-to-b from-[#87CEEB] to-[#E0F6FF] flex items-center justify-center relative overflow-hidden group">
+            {/* Clouds */}
+            <div className="absolute top-4 left-4 w-16 h-8 bg-white rounded-full blur-md opacity-80 animate-[float-y_4s_ease-in-out_infinite]"></div>
+            <div className="absolute top-10 right-10 w-24 h-10 bg-white rounded-full blur-lg opacity-60 animate-[float-y_6s_ease-in-out_infinite_reverse]"></div>
+            
+            {/* The "Portal" or Orb */}
+            <div className="relative w-32 h-32 rounded-full bg-gradient-to-tr from-[#FFD1DC] via-white to-[#B5EAD7] shadow-[0_0_30px_rgba(255,255,255,0.8),inset_0_0_20px_rgba(255,255,255,0.5)] flex items-center justify-center transform transition duration-700 group-hover:scale-110 group-hover:rotate-180 cursor-pointer">
+                <span className="text-3xl filter blur-[0.5px] opacity-80">👁️</span>
+                {/* Glitch Overlay */}
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 animate-pulse rounded-full"></div>
+            </div>
+
+            {/* Low-res Text */}
+            <div className="absolute bottom-4 font-['Comic_Sans_MS'] text-[#ff69b4] text-sm tracking-widest drop-shadow-md mix-blend-multiply">
+                memories_v1.0
+            </div>
+
+            {/* Bloom Filter Simulated */}
+            <div className="absolute inset-0 bg-white/10 mix-blend-overlay pointer-events-none"></div>
+        </div>
+    );
+};
+
+// 4. Spatial Bento (空间便当盒)
+export const SpatialCard = () => {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        setMouse({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        });
+    };
+
+    return (
+        <div className="h-56 bg-[#09090b] flex items-center justify-center relative p-6 group perspective-1000" onMouseMove={handleMouseMove}>
+            <div 
+                ref={cardRef}
+                className="relative w-full h-full bg-zinc-900/50 border border-white/10 rounded-3xl overflow-hidden shadow-2xl transition-transform duration-100 ease-out group-hover:rotate-x-2 group-hover:rotate-y-2"
+                style={{ 
+                    backdropFilter: 'blur(20px)',
+                    transformStyle: 'preserve-3d'
+                }}
+            >
+                {/* Spotlight Gradient */}
+                <div 
+                    className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                        background: `radial-gradient(400px circle at ${mouse.x}px ${mouse.y}px, rgba(255,255,255,0.1), transparent 40%)`
+                    }}
+                ></div>
+
+                {/* Content */}
+                <div className="p-5 h-full flex flex-col justify-between">
+                    <div className="flex justify-between items-start">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 shadow-lg flex items-center justify-center text-white font-bold text-lg">
+                            S
+                        </div>
+                        <div className="bg-white/5 px-2 py-1 rounded-md border border-white/5 text-[10px] text-zinc-400 font-mono">
+                            PRO
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 className="text-zinc-100 font-semibold text-lg">Spatial</h3>
+                        <p className="text-zinc-500 text-xs mt-1">Light tracking enabled.</p>
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden mt-2">
+                        <div className="bg-white h-full w-2/3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+// 5. Holographic Foil (全息镭射)
+export const HolographicCard = () => {
+    return (
+        <div className="h-56 relative overflow-hidden group cursor-pointer flex items-center justify-center">
+             {/* Holographic Base Gradient - Animated */}
+             <div className="absolute inset-0 bg-gradient-to-br from-[#ff00cc] via-[#333399] to-[#66ffff] bg-[length:400%_400%] animate-aurora"></div>
+             
+             {/* Noise Texture */}
+             <div className="absolute inset-0 opacity-40 mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+             
+             {/* Glass Overlay */}
+             <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+             {/* Sticker */}
+             <div className="relative z-10 w-24 h-24 rounded-full bg-gradient-to-tr from-white/40 to-white/10 border border-white/50 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
+                 <div className="text-white font-black text-xs tracking-widest text-center mix-blend-overlay">
+                     HOLO<br/>GRAPHIC
+                 </div>
+                 {/* Specular Shine */}
+                 <div className="absolute top-0 left-0 w-full h-full rounded-full bg-gradient-to-b from-white/60 to-transparent pointer-events-none"></div>
+             </div>
+        </div>
+    );
+};
+
+// 6. Dither Punk (抖动朋克)
+export const DitherCard = () => {
+    return (
+        <div className="h-56 bg-black relative overflow-hidden group flex items-center justify-center">
+            {/* Dither Pattern CSS Trick */}
+            <div 
+                className="absolute inset-0 opacity-40"
+                style={{
+                    backgroundImage: 'radial-gradient(#555 1px, transparent 1px)',
+                    backgroundSize: '3px 3px'
+                }}
+            ></div>
+
+            {/* Content */}
+            <div className="relative z-10 text-center bg-white border-2 border-white p-4 max-w-[80%] shadow-[4px_4px_0px_#555] transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none cursor-pointer">
+                <h3 className="font-['VT323'] text-3xl font-bold uppercase tracking-widest text-black">1-BIT</h3>
+                <p className="font-mono text-[10px] text-black mt-1">ATKINSON DITHERING</p>
+                {/* Pixel Icon */}
+                <div className="flex justify-center gap-1 mt-2">
+                    <div className="w-2 h-2 bg-black"></div>
+                    <div className="w-2 h-2 bg-black"></div>
+                    <div className="w-2 h-2 bg-gray-400"></div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+// 7. Risograph (孔版印刷)
+export const RisographCard = () => {
+    return (
+        <div className="h-56 bg-[#fffbf0] relative overflow-hidden group flex items-center justify-center cursor-pointer">
+            {/* Paper Texture */}
+            <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/rough-cloth.png')] mix-blend-multiply"></div>
+
+            {/* Riso Ink Layers (Multiply Blend) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-[60%] -translate-y-[60%] w-32 h-32 bg-[#ff007f] rounded-full mix-blend-multiply opacity-80 filter blur-[0.5px] group-hover:translate-x-[-65%] transition-transform duration-500"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-[40%] -translate-y-[40%] w-32 h-32 bg-[#00aaff] rounded-full mix-blend-multiply opacity-80 filter blur-[0.5px] group-hover:translate-x-[-35%] transition-transform duration-500"></div>
+            
+            {/* Content */}
+            <div className="relative z-10 mix-blend-multiply text-[#1a1a1a]">
+                <h2 className="text-4xl font-serif font-black italic tracking-tighter" style={{ textShadow: '2px 2px 0px rgba(255,255,0,0.5)' }}>RISO</h2>
+            </div>
+            
+            {/* Grain Overlay */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+        </div>
+    );
+};
+
+// 8. Ethereal Glow (以太光晕)
+export const EtherealCard = () => {
+    return (
+        <div className="h-56 bg-[#fcfcfc] flex items-center justify-center relative overflow-hidden group">
+            {/* Massive Bloom */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white rounded-full shadow-[0_0_80px_40px_rgba(255,255,255,1)] z-10 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#f0f0f0] to-white opacity-50"></div>
+
+            {/* Content */}
+            <div className="relative z-20 flex flex-col items-center transition-transform duration-700 group-hover:scale-105">
+                <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-300 to-transparent mb-4"></div>
+                <h3 className="font-serif text-2xl text-gray-800 tracking-[0.2em] font-light blur-[0.5px] hover:blur-none transition-all duration-500">ANGEL</h3>
+                <p className="text-[9px] text-gray-400 mt-2 uppercase tracking-[0.3em] font-light">Ethereal Interface</p>
+                <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-300 to-transparent mt-4"></div>
+            </div>
+
+            {/* Soft Orbs */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#fff5e6] rounded-full filter blur-[40px] opacity-60"></div>
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#e6f0ff] rounded-full filter blur-[40px] opacity-60"></div>
+        </div>
+    );
+};
+
+
+// ==========================================
+// T0: EXISTING HIGH FIDELITY STYLES
 // ==========================================
 
 // 0. Anthropic Serif (人文智性)
