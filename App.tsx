@@ -6,6 +6,11 @@ import FusionResultModal from './components/FusionResultModal';
 import ProjectPrdModal from './components/ProjectPrdModal';
 import { fuseStyles, generateProjectPrd } from './utils/ai';
 import { 
+    // NEW T0 (2026)
+    NeuromorphicCard,
+    QuantumGlassCard,
+    AmbientAuraCard,
+    HyperBrutalismCard,
     // NEW T0 (2025)
     ChromiumCard,
     KineticCard,
@@ -140,6 +145,12 @@ const App: React.FC = () => {
     // Component Factory
     const renderCardContent = (id: string) => {
         switch(id) {
+            // NEW T0 (2026 Avant-Garde)
+            case 'neuro-morphic': return <NeuromorphicCard />;
+            case 'quantum-glass': return <QuantumGlassCard />;
+            case 'ambient-aura': return <AmbientAuraCard />;
+            case 'hyper-brutalism': return <HyperBrutalismCard />;
+
             // NEW T0 (2025 Avant-Garde)
             case 'chromium': return <ChromiumCard />;
             case 'kinetic': return <KineticCard />;
@@ -190,7 +201,7 @@ const App: React.FC = () => {
                             <span className="ml-2 text-indigo-600 text-xs align-middle bg-indigo-50 px-2 py-1 rounded border border-indigo-100 uppercase tracking-wide">Gemini 3.0 Edition</span>
                         </h1>
                         <p className="text-xs text-gray-500 font-mono mt-1">
-                            {STYLE_ITEMS.length} Styles • 2025 Avant-Garde • AI Fusion
+                            {STYLE_ITEMS.length} Styles • 2026 Avant-Garde • AI Fusion
                         </p>
                     </div>
 

@@ -1,7 +1,91 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 // ==========================================
-// NEW: T0 AVANT-GARDE STYLES (2024-2025)
+// NEW: T0 AVANT-GARDE STYLES (2026)
+// ==========================================
+
+// 1. Neuro-morphic (神经拟态)
+export const NeuromorphicCard = () => {
+    return (
+        <div className="h-56 bg-[#f0f4f8] flex items-center justify-center relative overflow-hidden group">
+            {/* Breathing organic shape */}
+            <div className="absolute w-40 h-40 bg-gradient-to-br from-teal-200 to-emerald-400 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-[blob_7s_infinite]"></div>
+            <div className="absolute w-40 h-40 bg-gradient-to-tr from-blue-200 to-indigo-400 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-[blob_7s_infinite_2s]"></div>
+            
+            {/* Glassy organic container */}
+            <div className="relative z-10 w-3/4 h-3/4 bg-white/40 backdrop-blur-xl rounded-[40px] border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.05)] flex flex-col items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:rounded-[50px]">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 animate-pulse shadow-[0_0_20px_rgba(52,211,153,0.5)] mb-3"></div>
+                <h3 className="text-gray-700 font-medium tracking-wide">Breathe</h3>
+                <p className="text-gray-400 text-xs mt-1">Bio-sync active</p>
+            </div>
+        </div>
+    );
+};
+
+// 2. Quantum Glass (量子玻璃)
+export const QuantumGlassCard = () => {
+    return (
+        <div className="h-56 bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden group">
+            {/* Colorful background elements to refract */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-fuchsia-600 via-violet-600 to-pink-600 opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-cyan-500 rounded-full mix-blend-screen filter blur-3xl animate-pulse"></div>
+            
+            {/* Quantum Glass Pane */}
+            <div className="relative z-10 w-4/5 h-4/5 rounded-2xl border border-white/20 bg-white/5 backdrop-blur-3xl shadow-[0_0_40px_rgba(255,255,255,0.1)] overflow-hidden flex items-center justify-center transform transition-transform duration-500 group-hover:rotate-y-12 group-hover:rotate-x-12 perspective-1000">
+                {/* Chromatic Aberration Text */}
+                <div className="relative">
+                    <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50 absolute -left-[2px] text-red-500 mix-blend-screen opacity-70 group-hover:translate-x-[-2px] transition-transform">QUANTUM</h2>
+                    <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50 absolute left-[2px] text-cyan-500 mix-blend-screen opacity-70 group-hover:translate-x-[2px] transition-transform">QUANTUM</h2>
+                    <h2 className="text-4xl font-bold text-white relative z-10">QUANTUM</h2>
+                </div>
+                
+                {/* Refraction lines */}
+                <div className="absolute inset-0 bg-[linear-gradient(105deg,transparent_20%,rgba(255,255,255,0.2)_25%,transparent_30%)] translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
+            </div>
+        </div>
+    );
+};
+
+// 3. Ambient Aura (环境氛围)
+export const AmbientAuraCard = () => {
+    return (
+        <div className="h-56 bg-[#111111] flex items-center justify-center relative overflow-hidden group">
+            {/* Ambient Light Source */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-amber-500/30 rounded-full filter blur-[50px] group-hover:w-48 group-hover:h-48 group-hover:bg-amber-400/40 transition-all duration-700"></div>
+            
+            {/* UI Element dissolving into background */}
+            <div className="relative z-10 w-3/4 h-2/3 flex flex-col justify-end p-6 border-b border-l border-amber-500/20 rounded-bl-3xl bg-gradient-to-tr from-amber-500/10 to-transparent backdrop-blur-sm transition-all duration-500 group-hover:border-amber-400/40">
+                <div className="w-8 h-8 rounded-full bg-amber-400/20 shadow-[0_0_15px_rgba(251,191,36,0.5)] mb-auto"></div>
+                <h3 className="text-amber-50 font-light text-xl tracking-widest">AURA</h3>
+                <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 to-transparent mt-2"></div>
+            </div>
+        </div>
+    );
+};
+
+// 4. Hyper-Brutalism (超粗野主义)
+export const HyperBrutalismCard = () => {
+    return (
+        <div className="h-56 bg-[#ff3366] flex items-center justify-center relative overflow-hidden group perspective-1000">
+            {/* Grid background */}
+            <div className="absolute inset-0 bg-[linear-gradient(#000_2px,transparent_2px),linear-gradient(90deg,#000_2px,transparent_2px)] bg-[size:20px_20px] opacity-20"></div>
+            
+            {/* 3D Brutalist Block */}
+            <div className="relative z-10 w-3/4 h-2/3 bg-[#00ffcc] border-4 border-black flex flex-col items-center justify-center transform transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2 group-hover:rotate-3 shadow-[8px_8px_0px_0px_#000] group-hover:shadow-[16px_16px_0px_0px_#000]">
+                <h2 className="text-5xl font-black text-black uppercase tracking-tighter transform -skew-x-12">HYPER</h2>
+                <div className="absolute -top-4 -right-4 bg-yellow-400 border-4 border-black px-2 py-1 transform rotate-12 group-hover:rotate-45 transition-transform duration-300">
+                    <span className="text-black font-bold text-sm">RAW</span>
+                </div>
+                <button className="mt-4 bg-black text-white px-6 py-2 font-mono font-bold uppercase border-2 border-transparent hover:bg-white hover:text-black hover:border-black transition-colors">
+                    Execute
+                </button>
+            </div>
+        </div>
+    );
+};
+
+// ==========================================
+// T0 AVANT-GARDE STYLES (2024-2025)
 // ==========================================
 
 // 1. Chromium Liquid (液态铬金)
@@ -758,7 +842,7 @@ export const BrutalBWCard = () => {
             </div>
             
             <button className="self-end border-b border-white hover:bg-white hover:text-black transition-colors z-10 text-xs uppercase p-1">
-                Access Data >
+                Access Data &gt;
             </button>
             
             <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-white rounded-full mix-blend-exclusion filter blur-xl opacity-0 group-hover:opacity-100 transition duration-100"></div>

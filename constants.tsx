@@ -4,6 +4,59 @@ import { PrdData, StyleItem } from './types';
 // PRD Data Dictionary
 // ==========================================
 export const PRD_DATA: Record<string, PrdData> = {
+  // --- T0: 2026 Avant-Garde ---
+  'neuro-morphic': {
+    name: 'Neuro-morphic (神经拟态)',
+    specs: {
+      radius: 'Organic / Breathing',
+      shadow: 'Bio-luminescent Glow',
+      font: 'Humanist Sans / Variable',
+      colors: 'Tissue Pink, Synapse Blue, Fluid Green'
+    },
+    web: '模拟生物组织的呼吸感与脉动。使用 CSS 动画实现不规则的流体形状 (Blob) 缓慢变化。色彩过渡极度柔和，仿佛带有生命体征。交互反馈类似神经突触的激活。',
+    ios: '利用 CoreAnimation 实现复杂的非线性形变。触觉反馈 (Haptics) 模拟心跳或呼吸频率。',
+    android: '使用 RenderEffect 和自定义 Shader 创造有机体的柔软边缘。',
+    mini: '使用多层半透明的 SVG 动画叠加，模拟细胞分裂或呼吸效果。'
+  },
+  'quantum-glass': {
+    name: 'Quantum Glass (量子玻璃)',
+    specs: {
+      radius: '16px - 32px',
+      shadow: 'Chromatic Aberration (色差)',
+      font: 'Sharp Grotesk / Mono',
+      colors: 'Deep Void, Prismatic Refraction'
+    },
+    web: 'Glassmorphism 的终极进化。不仅有模糊，还必须包含色散 (Chromatic Aberration) 和次表面散射 (Subsurface Scattering)。使用多层 mix-blend-mode 和 filter 模拟光线穿过复杂介质的折射。',
+    ios: '深度定制 UIVisualEffectView，加入 RGB 通道分离的着色器。',
+    android: '通过 Vulkan 或 OpenGL ES 编写自定义材质，实现物理级别的光线折射。',
+    mini: '使用预渲染的带有色散效果的高清玻璃素材，配合简单的 CSS 模糊。'
+  },
+  'ambient-aura': {
+    name: 'Ambient Aura (环境氛围)',
+    specs: {
+      radius: 'Borderless / Dissolving',
+      shadow: 'Massive Colored Light',
+      font: 'Thin / Elegant Serif',
+      colors: 'Warm Amber, Ethereal Violet'
+    },
+    web: '去边框化设计 (Borderless UI)。界面元素融入背景，仅通过光影的强弱和色彩的晕染来划分层级。大量使用极高模糊半径 (100px+) 的 radial-gradient 作为光源。',
+    ios: 'UI 元素如同悬浮在发光气体中。利用 SwiftUI 的 .blur 和 .blendMode 创造氛围感。',
+    android: '使用动态的 Mesh Gradient 作为背景，UI 控件的边缘与背景柔和过渡。',
+    mini: '通过大面积的 CSS 径向渐变背景和极简的线条图标实现。'
+  },
+  'hyper-brutalism': {
+    name: 'Hyper-Brutalism (超粗野主义)',
+    specs: {
+      radius: '0px / Sharp Angles',
+      shadow: 'Hard Solid Drop (3D)',
+      font: 'Massive / Distorted Sans',
+      colors: 'Neon Cyan, Hot Magenta, Pure Black'
+    },
+    web: '结合 3D 视角的粗野主义。极高对比度，巨大的排版，故意破坏网格。使用 CSS 3D Transforms (rotateX, rotateY) 让扁平元素呈现出厚重的物理块状感。',
+    ios: '利用 SceneKit 或 RealityKit 将 UI 控件变成真正的 3D 物理块，交互带有沉重的碰撞感。',
+    android: '自定义 View 绘制带有厚度的 3D 边框，结合物理引擎 (如 Box2D) 实现掉落和碰撞。',
+    mini: '使用 CSS 伪元素模拟 3D 厚度，配合强烈的色彩对比和粗体文字。'
+  },
   // --- T0: Chromium Liquid (液态铬金) ---
   'chromium': {
     name: 'Chromium Liquid (液态铬金)',
@@ -562,6 +615,39 @@ export const getPrdData = (id: string): PrdData => {
 // ==========================================
 
 const RAW_STYLES: Omit<StyleItem, 'title'>[] = [
+  // --- NEW 2026 TRENDS (T0++) ---
+  {
+      id: 'neuro-morphic',
+      tier: 'T0',
+      tierColorClass: 'bg-emerald-50 text-teal-600 ring-2 ring-emerald-200',
+      description: '2026趋势: 神经拟态。生物反馈，呼吸感，有机流体形态。',
+      application: '应用: 脑机接口, 冥想疗愈, 次世代健康管理。',
+      hasCustomRender: true
+  },
+  {
+      id: 'quantum-glass',
+      tier: 'T0',
+      tierColorClass: 'bg-black text-fuchsia-400 ring-2 ring-cyan-500',
+      description: '2026趋势: 量子玻璃。色散折射，次表面散射，物理级光学。',
+      application: '应用: 顶级 AI 平台, 空间计算 OS, 奢侈品数字展厅。',
+      hasCustomRender: true
+  },
+  {
+      id: 'ambient-aura',
+      tier: 'T0',
+      tierColorClass: 'bg-amber-50 text-amber-700 ring-2 ring-amber-200',
+      description: '2026趋势: 环境氛围。去边框化，光影数据化，极致融合。',
+      application: '应用: 智能家居中枢, 沉浸式阅读, 氛围音乐 App。',
+      hasCustomRender: true
+  },
+  {
+      id: 'hyper-brutalism',
+      tier: 'T0',
+      tierColorClass: 'bg-pink-500 text-black ring-2 ring-black',
+      description: '2026趋势: 超粗野主义。3D 物理块，破坏性排版，高能交互。',
+      application: '应用: 独立游戏, 潮流电商, 青年文化社区。',
+      hasCustomRender: true
+  },
   // --- NEW 2025 TRENDS (T0+) ---
   {
       id: 'chromium',
