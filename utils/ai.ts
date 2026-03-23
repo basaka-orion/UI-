@@ -2,11 +2,22 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { StyleItem, FusionResult, ProjectPrd } from "../types";
 import { PRD_DATA } from "../constants";
 
-// Initialize Gemini
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize Gemini (gracefully - don't crash if no API key)
+let ai: InstanceType<typeof GoogleGenAI> | null = null;
+try {
+  const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY;
+  if (apiKey) {
+    ai = new GoogleGenAI({ apiKey });
+  } else {
+    console.warn('[UI Style Museum] No GEMINI_API_KEY set. AI features (Fusion Lab, Project Genesis) will be disabled. The style gallery still works.');
+  }
+} catch (e) {
+  console.warn('[UI Style Museum] Failed to initialize Gemini:', e);
+}
 
 // === FUSION ENGINE: STYLE LAB ===
 export async function fuseStyles(selectedStyleIds: string[], allStyles: StyleItem[]): Promise<FusionResult> {
+  if (!ai) throw new Error('AI features require a GEMINI_API_KEY. Please set it in your environment variables.');
   const selectedItems = allStyles.filter(s => selectedStyleIds.includes(s.id));
   const parentNames = selectedItems.map(s => s.title).join(', ');
   
@@ -92,7 +103,7 @@ export async function generateProjectPrd(
     availableStyles: StyleItem[],
     onStatusUpdate: (status: string) => void
 ): Promise<ProjectPrd> {
-    
+    if (!ai) throw new Error('AI features require a GEMINI_API_KEY. Please set it in your environment variables.');
     // Pass the tier info to AI so it knows T0 is experimental
     const stylesContext = availableStyles.map(s => ({ 
         id: s.id, 
