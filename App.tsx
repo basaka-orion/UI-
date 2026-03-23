@@ -11,6 +11,13 @@ import {
     QuantumGlassCard,
     AmbientAuraCard,
     HyperBrutalismCard,
+    // NEW T0 (2026 Batch 2)
+    CopilotAICard,
+    ZeroUICard,
+    DataInkCard,
+    EmotionAdaptiveCard,
+    AgenticOSCard,
+    WabiSabiCard,
     // NEW T0 (2025)
     ChromiumCard,
     KineticCard,
@@ -150,6 +157,12 @@ const App: React.FC = () => {
             case 'quantum-glass': return <QuantumGlassCard />;
             case 'ambient-aura': return <AmbientAuraCard />;
             case 'hyper-brutalism': return <HyperBrutalismCard />;
+            case 'copilot-ai': return <CopilotAICard />;
+            case 'zero-ui': return <ZeroUICard />;
+            case 'data-ink': return <DataInkCard />;
+            case 'emotion-adaptive': return <EmotionAdaptiveCard />;
+            case 'agentic-os': return <AgenticOSCard />;
+            case 'wabi-sabi': return <WabiSabiCard />;
 
             // NEW T0 (2025 Avant-Garde)
             case 'chromium': return <ChromiumCard />;
@@ -319,7 +332,7 @@ const App: React.FC = () => {
                         {STYLE_ITEMS.map((item) => {
                             const isSelected = selectedStyleIds.includes(item.id);
                             // Highlight New T0 Styles
-                            const isNewT0 = ['chromium', 'kinetic', 'dreamcore', 'spatial', 'holographic', 'dither', 'risograph', 'ethereal'].includes(item.id);
+                            const isNewT0 = ['copilot-ai', 'zero-ui', 'data-ink', 'emotion-adaptive', 'agentic-os', 'wabi-sabi', 'chromium', 'kinetic', 'dreamcore', 'spatial', 'holographic', 'dither', 'risograph', 'ethereal'].includes(item.id);
 
                             return (
                                 <div 

@@ -84,6 +84,274 @@ export const HyperBrutalismCard = () => {
     );
 };
 
+// 5. Copilot AI (AI副驾驶)
+export const CopilotAICard = () => {
+    const [streaming, setStreaming] = useState(false);
+    const [text, setText] = useState('');
+    const fullText = '> Analyzing context...\n> Building plan...\n> Executing task ✓';
+
+    const startStream = () => {
+        if (streaming) return;
+        setStreaming(true);
+        setText('');
+        let i = 0;
+        const interval = setInterval(() => {
+            if (i < fullText.length) {
+                setText(fullText.slice(0, i + 1));
+                i++;
+            } else {
+                clearInterval(interval);
+                setStreaming(false);
+            }
+        }, 40);
+    };
+
+    return (
+        <div className="h-56 bg-[#0d1117] flex flex-col p-4 relative overflow-hidden group font-mono text-sm">
+            {/* Status bar */}
+            <div className="flex items-center gap-2 mb-3 text-xs">
+                <div className={`w-2 h-2 rounded-full ${streaming ? 'bg-yellow-400 animate-pulse' : 'bg-emerald-400'}`}></div>
+                <span className="text-gray-500">{streaming ? 'Agent thinking...' : 'Ready'}</span>
+                <div className="flex-1"></div>
+                <span className="text-violet-400">copilot-4o</span>
+            </div>
+
+            {/* Streaming output */}
+            <div className="flex-1 text-gray-300 whitespace-pre-wrap text-xs leading-relaxed overflow-hidden">
+                {text || <span className="text-gray-600 italic">Click Run to start agent...</span>}
+                {streaming && <span className="inline-block w-2 h-4 bg-violet-400 animate-pulse ml-0.5"></span>}
+            </div>
+
+            {/* Action button */}
+            <button
+                onClick={startStream}
+                className="mt-2 self-end px-4 py-1.5 bg-violet-600 text-white rounded-md text-xs font-bold hover:bg-violet-500 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-wait"
+                disabled={streaming}
+            >
+                {streaming ? '⏳ Running...' : '▶ Run Agent'}
+            </button>
+        </div>
+    );
+};
+
+// 6. Zero UI (零界面)
+export const ZeroUICard = () => {
+    const [proximity, setProximity] = useState(0);
+    
+    const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const x = e.clientX - rect.left - centerX;
+        const y = e.clientY - rect.top - centerY;
+        const dist = Math.sqrt(x * x + y * y);
+        const maxDist = Math.sqrt(centerX * centerX + centerY * centerY);
+        setProximity(1 - Math.min(dist / maxDist, 1));
+    };
+
+    return (
+        <div
+            className="h-56 flex items-center justify-center relative overflow-hidden cursor-none"
+            style={{ backgroundColor: `hsl(220, 15%, ${5 + proximity * 8}%)` }}
+            onMouseMove={handleMove}
+            onMouseLeave={() => setProximity(0)}
+        >
+            {/* Contextual elements that appear on proximity */}
+            <div className="absolute inset-0 flex items-center justify-center transition-all duration-700" style={{ opacity: proximity }}>
+                <div className="w-32 h-32 rounded-full border border-white/10" style={{ transform: `scale(${0.5 + proximity * 0.5})`, opacity: proximity * 0.6 }}></div>
+            </div>
+
+            <div className="relative z-10 text-center transition-all duration-500" style={{ opacity: 0.2 + proximity * 0.8 }}>
+                <div className="text-white/80 text-lg font-light tracking-[0.3em]" style={{ letterSpacing: `${0.3 - proximity * 0.2}em` }}>
+                    AMBIENT
+                </div>
+                <div className="text-gray-500 text-[10px] mt-2" style={{ opacity: proximity > 0.5 ? 1 : 0, transition: 'opacity 0.3s' }}>
+                    Interface appears when needed
+                </div>
+            </div>
+
+            {/* Subtle glow follows cursor */}
+            <div className="absolute inset-0 pointer-events-none" style={{
+                background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(100,130,255,${proximity * 0.15}) 0%, transparent 50%)`
+            }}></div>
+        </div>
+    );
+};
+
+// 7. Data Ink (数据墨水)
+export const DataInkCard = () => {
+    const data = [28, 45, 32, 58, 41, 72, 55, 68, 48, 85, 62, 78];
+    const max = Math.max(...data);
+
+    return (
+        <div className="h-56 bg-[#fefefe] flex flex-col p-5 relative font-['IBM_Plex_Mono']">
+            {/* Header - minimal */}
+            <div className="flex justify-between items-baseline mb-1">
+                <span className="text-[10px] text-gray-900 font-bold tracking-wide">REVENUE Q4</span>
+                <span className="text-[10px] text-gray-400">$4.2M ↑12%</span>
+            </div>
+            <div className="h-px bg-gray-200 mb-3"></div>
+
+            {/* Sparkline chart - pure data ink */}
+            <div className="flex-1 flex items-end gap-[3px]">
+                {data.map((v, i) => (
+                    <div key={i} className="flex-1 flex flex-col items-center justify-end group cursor-crosshair">
+                        <div
+                            className="w-full bg-gray-800 group-hover:bg-black transition-colors relative"
+                            style={{ height: `${(v / max) * 100}%`, minHeight: '2px' }}
+                        >
+                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                                {v}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* Axis labels */}
+            <div className="flex justify-between mt-1 text-[8px] text-gray-400">
+                <span>Jan</span><span>Dec</span>
+            </div>
+        </div>
+    );
+};
+
+// 8. Emotion Adaptive (情绪自适应)
+export const EmotionAdaptiveCard = () => {
+    const [mood, setMood] = useState<'calm' | 'joy' | 'focus'>('calm');
+
+    const themes = {
+        calm: { bg: 'from-blue-50 to-indigo-50', accent: 'bg-blue-400', text: 'text-blue-800', emoji: '🌊', label: 'Calm' },
+        joy: { bg: 'from-amber-50 to-orange-50', accent: 'bg-amber-400', text: 'text-amber-800', emoji: '☀️', label: 'Joy' },
+        focus: { bg: 'from-emerald-50 to-teal-50', accent: 'bg-emerald-500', text: 'text-emerald-800', emoji: '🎯', label: 'Focus' },
+    };
+    const t = themes[mood];
+
+    return (
+        <div className={`h-56 bg-gradient-to-br ${t.bg} flex flex-col items-center justify-center relative overflow-hidden transition-all duration-700`}>
+            {/* Background pulse */}
+            <div className={`absolute w-40 h-40 ${t.accent} rounded-full filter blur-[60px] opacity-20 animate-pulse`}></div>
+
+            <div className="relative z-10 text-center">
+                <div className="text-4xl mb-2 transition-transform duration-500 hover:scale-125">{t.emoji}</div>
+                <h3 className={`${t.text} font-medium text-lg transition-colors duration-500`}>{t.label}</h3>
+                <p className="text-gray-400 text-[10px] mt-1">Adapting to your mood</p>
+            </div>
+
+            {/* Mood switchers */}
+            <div className="absolute bottom-3 flex gap-3 z-20">
+                {(['calm', 'joy', 'focus'] as const).map(m => (
+                    <button
+                        key={m}
+                        onClick={(e) => { e.stopPropagation(); setMood(m); }}
+                        className={`w-6 h-6 rounded-full transition-all duration-300 ${mood === m ? `${themes[m].accent} scale-110 shadow-lg` : 'bg-gray-300 hover:bg-gray-400'}`}
+                        title={themes[m].label}
+                    ></button>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+// 9. Agentic OS (智能体OS)
+export const AgenticOSCard = () => {
+    const [agents, setAgents] = useState([
+        { name: 'Planner', status: 'idle', color: 'emerald' },
+        { name: 'Coder', status: 'idle', color: 'cyan' },
+        { name: 'Reviewer', status: 'idle', color: 'violet' },
+    ]);
+
+    const runPipeline = () => {
+        const statusFlow = ['running', 'running', 'idle'];
+        agents.forEach((_, i) => {
+            setTimeout(() => {
+                setAgents(prev => prev.map((a, j) => ({
+                    ...a,
+                    status: j === i ? 'running' : j < i ? 'done' : 'idle'
+                })));
+            }, i * 800);
+        });
+        setTimeout(() => {
+            setAgents(prev => prev.map(a => ({ ...a, status: 'done' })));
+        }, agents.length * 800);
+        setTimeout(() => {
+            setAgents(prev => prev.map(a => ({ ...a, status: 'idle' })));
+        }, agents.length * 800 + 2000);
+    };
+
+    return (
+        <div className="h-56 bg-[#0a0f14] flex flex-col p-4 font-mono text-xs relative overflow-hidden">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-3">
+                <span className="text-emerald-400 font-bold text-[10px] tracking-wider">⬡ AGENT MESH</span>
+                <span className="text-gray-600 text-[9px]">v2.0</span>
+            </div>
+
+            {/* Agent pipeline */}
+            <div className="flex-1 flex flex-col gap-2">
+                {agents.map((agent, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                        <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                            agent.status === 'running' ? 'bg-yellow-400 animate-pulse' :
+                            agent.status === 'done' ? 'bg-emerald-400' :
+                            'bg-gray-600'
+                        }`}></div>
+                        <span className="text-gray-400 w-16">{agent.name}</span>
+                        <div className="flex-1 h-1 bg-gray-800 rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full transition-all duration-700 ${
+                                agent.status === 'running' ? 'w-1/2 bg-yellow-400' :
+                                agent.status === 'done' ? 'w-full bg-emerald-400' :
+                                'w-0'
+                            }`}></div>
+                        </div>
+                        <span className="text-gray-600 w-8 text-right">
+                            {agent.status === 'done' ? '✓' : agent.status === 'running' ? '⟳' : '○'}
+                        </span>
+                    </div>
+                ))}
+            </div>
+
+            {/* Connection lines */}
+            <div className="absolute right-4 top-12 bottom-16 w-px bg-gradient-to-b from-emerald-500/30 via-cyan-500/30 to-violet-500/30"></div>
+
+            <button
+                onClick={runPipeline}
+                className="mt-2 self-center px-4 py-1 border border-emerald-500/30 text-emerald-400 rounded text-[10px] hover:bg-emerald-500/10 active:scale-95 transition-all"
+            >
+                ▶ Execute Pipeline
+            </button>
+        </div>
+    );
+};
+
+// 10. Wabi-Sabi Digital (数字侘寂)
+export const WabiSabiCard = () => {
+    return (
+        <div className="h-56 bg-[#f5f0e8] flex items-center justify-center relative overflow-hidden group">
+            {/* Subtle grain texture */}
+            <div className="absolute inset-0 opacity-30" style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E")`,
+            }}></div>
+
+            {/* Imperfect circle */}
+            <div className="absolute top-6 right-8 w-20 h-20 border border-stone-300/40 rounded-[40%_60%_55%_45%/50%_40%_60%_50%] group-hover:rounded-[50%_50%_50%_50%] transition-all duration-[2s]"></div>
+
+            {/* Content */}
+            <div className="relative z-10 text-center max-w-[200px]">
+                <div className="w-12 h-px bg-stone-400/50 mx-auto mb-4"></div>
+                <h3 className="font-serif text-stone-600 text-lg tracking-wide font-light">不完美</h3>
+                <p className="text-stone-400 text-[10px] mt-2 leading-relaxed font-light">
+                    Beauty in imperfection
+                </p>
+                <div className="w-8 h-px bg-stone-400/30 mx-auto mt-4 group-hover:w-16 transition-all duration-[1.5s]"></div>
+            </div>
+
+            {/* Weathered edge */}
+            <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-stone-200/30 to-transparent"></div>
+        </div>
+    );
+};
+
 // ==========================================
 // T0 AVANT-GARDE STYLES (2024-2025)
 // ==========================================

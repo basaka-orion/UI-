@@ -648,6 +648,55 @@ const RAW_STYLES: Omit<StyleItem, 'title'>[] = [
       application: '应用: 独立游戏, 潮流电商, 青年文化社区。',
       hasCustomRender: true
   },
+  // --- NEW 2026 TRENDS (T0++) BATCH 2 ---
+  {
+      id: 'copilot-ai',
+      tier: 'T0',
+      tierColorClass: 'bg-violet-100 text-violet-800 ring-2 ring-violet-300',
+      description: '2026趋势: AI副驾驶。流式思维链，智能体状态，自主执行面板。',
+      application: '应用: AI 编程助手, Copilot UI, 智能体工作流。',
+      hasCustomRender: true
+  },
+  {
+      id: 'zero-ui',
+      tier: 'T0',
+      tierColorClass: 'bg-gray-50 text-gray-500 ring-2 ring-gray-200',
+      description: '2026趋势: 零界面。环境计算，上下文感知，隐身式交互。',
+      application: '应用: IoT 中枢, 智慧空间, 无感支付。',
+      hasCustomRender: true
+  },
+  {
+      id: 'data-ink',
+      tier: 'T0',
+      tierColorClass: 'bg-white text-gray-800 ring-2 ring-gray-300',
+      description: '2026趋势: 数据墨水。Tufte极简哲学，最大化数据-墨水比，信息密度。',
+      application: '应用: 金融终端, 科研仪表板, 彭博风格。',
+      hasCustomRender: true
+  },
+  {
+      id: 'emotion-adaptive',
+      tier: 'T0',
+      tierColorClass: 'bg-gradient-to-r from-rose-100 to-sky-100 text-gray-700 ring-2 ring-rose-200',
+      description: '2026趋势: 情绪自适应。交互感知，色温渐变，脉搏反馈。',
+      application: '应用: 心理健康, 情绪日记, 治愈系社交。',
+      hasCustomRender: true
+  },
+  {
+      id: 'agentic-os',
+      tier: 'T0',
+      tierColorClass: 'bg-zinc-900 text-emerald-400 ring-2 ring-emerald-500',
+      description: '2026趋势: 智能体OS。多Agent编排，任务流可视化，自主执行。',
+      application: '应用: AI 操作系统, 自动化平台, 企业级Agent。',
+      hasCustomRender: true
+  },
+  {
+      id: 'wabi-sabi',
+      tier: 'T0',
+      tierColorClass: 'bg-stone-100 text-stone-600 ring-2 ring-stone-300',
+      description: '2026趋势: 数字侘寂。不完美之美，自然衰变纹理，极致克制。',
+      application: '应用: 茶道, 冥想空间, 设计师博客, 美学社区。',
+      hasCustomRender: true
+  },
   // --- NEW 2025 TRENDS (T0+) ---
   {
       id: 'chromium',
@@ -1111,6 +1160,16 @@ const RAW_STYLES: Omit<StyleItem, 'title'>[] = [
 const getDisplayName = (id: string, description: string) => {
     // Mapping for new and existing styles
     const names: Record<string, string> = {
+        'neuro-morphic': 'Neuro-morphic (神经拟态)',
+        'quantum-glass': 'Quantum Glass (量子玻璃)',
+        'ambient-aura': 'Ambient Aura (环境氛围)',
+        'hyper-brutalism': 'Hyper-Brutalism (超粗野主义)',
+        'copilot-ai': 'Copilot AI (AI副驾驶)',
+        'zero-ui': 'Zero UI (零界面)',
+        'data-ink': 'Data Ink (数据墨水)',
+        'emotion-adaptive': 'Emotion Adaptive (情绪自适应)',
+        'agentic-os': 'Agentic OS (智能体OS)',
+        'wabi-sabi': 'Wabi-Sabi Digital (数字侘寂)',
         'chromium': 'Chromium Liquid (液态铬金)',
         'kinetic': 'Kinetic Type (动势排印)',
         'dreamcore': 'Dreamcore Aero (梦核航空)',
